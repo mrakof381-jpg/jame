@@ -1,6 +1,6 @@
 import { io, Socket } from 'socket.io-client';
 
-export const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'https://jame-3659.onrender.com/';
+export const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'https://jame-3659.onrender.com';
 
 let socket: Socket | null = null;
 let listenersAttached = false;
