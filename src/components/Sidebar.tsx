@@ -155,28 +155,34 @@ export function Sidebar() {
           </button>
         </div>
 
-        {/* Navigation */}
-        <div className="flex gap-1 bg-white/5 rounded-2xl p-1 mb-3">
-          {navItems.map(item => (
-            <button
-              key={item.view}
-              onClick={() => setView(item.view)}
-              className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-medium transition-all relative ${
-                view === item.view
-                  ? 'bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              <item.icon className="w-4 h-4" />
-              <span className="hidden sm:inline">{item.label}</span>
-              {item.badge ? (
-                <span className="absolute -top-1 -right-1 min-w-[18px] h-[18px] flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full px-1">
-                  {item.badge}
-                </span>
-              ) : null}
-            </button>
-          ))}
-        </div>
+        {/* Telegram-inspired glass navigation */}
+        <nav className="jame-nav-glass mb-3" aria-label="Основная навигация">
+          {navItems.map(item => {
+            const active = view === item.view;
+            return (
+              <button
+                key={item.view}
+                type="button"
+                onClick={() => setView(item.view)}
+                aria-label={item.label}
+                aria-current={active ? 'page' : undefined}
+                title={item.label}
+                className={`jame-nav-item ${active ? 'jame-nav-item-active' : ''}`}
+              >
+                <item.icon
+                  className="w-[21px] h-[21px] shrink-0 transition-transform duration-200"
+                  strokeWidth={active ? 2.35 : 1.9}
+                />
+                <span className="sr-only">{item.label}</span>
+                {item.badge ? (
+                  <span className="jame-nav-badge">
+                    {item.badge > 99 ? '99+' : item.badge}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+        </nav>
       </div>
 
       {/* Content */}
