@@ -215,10 +215,6 @@ export function ChatView() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [chatMessages.length]);
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, [activeChat]);
-
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -327,7 +323,7 @@ export function ChatView() {
   const replyMessage = replyTo ? chatMessages.find(m => m.id === replyTo.id) : null;
 
   return (
-    <div className="flex-1 flex flex-col h-full relative">
+    <div className="flex-1 min-h-0 min-w-0 flex flex-col h-full relative">
       {/* Header */}
       <div className="px-4 py-3 flex items-center gap-3 border-b border-white/10 backdrop-blur-xl bg-white/5 shrink-0">
         <button
@@ -442,7 +438,7 @@ export function ChatView() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 custom-scroll">
+      <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-4 py-4 space-y-4 custom-scroll">
         {dateGroups.map(group => (
           <div key={group.date}>
             <div className="flex justify-center mb-4">
@@ -631,7 +627,7 @@ export function ChatView() {
       )}
 
       {/* Input */}
-      <div className="px-4 py-3 border-t border-white/10 bg-white/5 backdrop-blur-xl shrink-0">
+      <div className="jame-message-composer shrink-0 px-4 py-3 border-t border-white/10 bg-white/5 backdrop-blur-xl">
         <div className="flex items-center gap-2">
           {isRecording ? (
             <div className="flex-1 flex items-center gap-3 px-4 py-3 bg-red-500/10 border border-red-500/20 rounded-2xl">
