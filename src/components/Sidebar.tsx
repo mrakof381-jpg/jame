@@ -155,38 +155,10 @@ export function Sidebar() {
           </button>
         </div>
 
-        {/* Telegram-inspired glass navigation */}
-        <nav className="jame-nav-glass mb-3" aria-label="Основная навигация">
-          {navItems.map(item => {
-            const active = view === item.view;
-            return (
-              <button
-                key={item.view}
-                type="button"
-                onClick={() => setView(item.view)}
-                aria-label={item.label}
-                aria-current={active ? 'page' : undefined}
-                title={item.label}
-                className={`jame-nav-item ${active ? 'jame-nav-item-active' : ''}`}
-              >
-                <item.icon
-                  className="w-[21px] h-[21px] shrink-0 transition-transform duration-200"
-                  strokeWidth={active ? 2.35 : 1.9}
-                />
-                <span className="sr-only">{item.label}</span>
-                {item.badge ? (
-                  <span className="jame-nav-badge">
-                    {item.badge > 99 ? '99+' : item.badge}
-                  </span>
-                ) : null}
-              </button>
-            );
-          })}
-        </nav>
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto px-2 custom-scroll">
+      <div className="flex-1 min-h-0 overflow-y-auto px-2 custom-scroll">
         {/* ===== CHATS VIEW ===== */}
         {view === 'chats' && (
           <div className="space-y-1">
@@ -612,6 +584,37 @@ export function Sidebar() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Нижняя стеклянная панель навигации */}
+      <div className="jame-bottom-nav-wrap">
+        <nav className="jame-nav-glass jame-nav-bottom" aria-label="Основная навигация">
+          {navItems.map(item => {
+            const active = view === item.view;
+            return (
+              <button
+                key={item.view}
+                type="button"
+                onClick={() => setView(item.view)}
+                aria-label={item.label}
+                aria-current={active ? 'page' : undefined}
+                title={item.label}
+                className={`jame-nav-item ${active ? 'jame-nav-item-active' : ''}`}
+              >
+                <item.icon
+                  className="w-[23px] h-[23px] shrink-0 transition-transform duration-200"
+                  strokeWidth={active ? 2.35 : 1.9}
+                />
+                <span className="sr-only">{item.label}</span>
+                {item.badge ? (
+                  <span className="jame-nav-badge">
+                    {item.badge > 99 ? '99+' : item.badge}
+                  </span>
+                ) : null}
+              </button>
+            );
+          })}
+        </nav>
       </div>
     </div>
   );
