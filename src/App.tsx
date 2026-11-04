@@ -39,7 +39,7 @@ export function App() {
   };
 
   return (
-    <div className={`jame-shell h-screen flex overflow-hidden theme-${theme} ${themeClasses[theme]}`}>
+    <div className={`jame-shell h-dvh h-screen min-h-0 flex overflow-hidden theme-${theme} ${themeClasses[theme]}`}>
       {/* Sidebar */}
       <div className={`jame-sidebar w-full md:w-[380px] shrink-0 border-r flex flex-col ${sidebarBg[theme]} ${
         showMobileChat ? 'hidden md:flex' : 'flex'
@@ -48,7 +48,7 @@ export function App() {
       </div>
 
       {/* Chat */}
-      <div className={`jame-chat-stage flex-1 flex flex-col ${
+      <div className={`jame-chat-stage min-h-0 flex-1 flex flex-col ${
         !showMobileChat && !activeChat ? 'hidden md:flex' : 'flex'
       }`}>
         <ChatView />
