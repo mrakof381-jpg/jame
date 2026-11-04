@@ -179,3 +179,84 @@ body {
     transition: none !important;
   }
 }
+
+/* Bottom floating glass navigation — Telegram-inspired */
+.jame-bottom-nav-wrap {
+  position: relative;
+  z-index: 20;
+  flex: 0 0 auto;
+  padding: 10px 14px max(12px, env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(8, 15, 29, 0.42), transparent);
+}
+
+.jame-nav-glass.jame-nav-bottom {
+  min-height: 68px;
+  gap: 9px;
+  padding: 7px;
+  border-radius: 23px;
+  border-color: rgba(164, 194, 245, 0.22);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.045)),
+    rgba(20, 35, 61, .66);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    inset 0 -1px 0 rgba(255,255,255,.035),
+    0 12px 32px rgba(0,0,0,.28),
+    0 0 28px rgba(69, 130, 255, .08);
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
+  backdrop-filter: blur(28px) saturate(175%);
+}
+
+.jame-nav-bottom .jame-nav-item {
+  height: 52px;
+  border-radius: 17px;
+}
+
+.jame-nav-bottom .jame-nav-item-active {
+  background: linear-gradient(120deg, rgba(47, 151, 255, .96), rgba(104, 91, 255, .96) 58%, rgba(177, 65, 245, .96));
+  box-shadow:
+    0 5px 22px rgba(76, 111, 255, .38),
+    0 0 18px rgba(129, 89, 255, .24),
+    inset 0 1px 0 rgba(255,255,255,.42);
+}
+
+.jame-nav-bottom .jame-nav-item-active svg {
+  filter: drop-shadow(0 1px 5px rgba(255,255,255,.32));
+  transform: scale(1.06);
+}
+
+.jame-nav-bottom .jame-nav-badge {
+  top: -4px;
+  right: 5px;
+  border-color: rgba(28, 43, 69, .95);
+}
+
+.theme-light .jame-bottom-nav-wrap {
+  background: linear-gradient(to top, rgba(225, 235, 249, .78), transparent);
+}
+
+.theme-light .jame-nav-glass.jame-nav-bottom {
+  border-color: rgba(112, 145, 194, .28);
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,255,255,.48)),
+    rgba(220, 232, 249, .72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    0 12px 30px rgba(44, 74, 120, .14);
+}
+
+@media (max-width: 767px) {
+  .jame-bottom-nav-wrap {
+    padding: 8px 12px max(10px, env(safe-area-inset-bottom));
+  }
+  .jame-nav-glass.jame-nav-bottom {
+    min-height: 66px;
+    border-radius: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jame-nav-bottom .jame-nav-item-active svg {
+    transform: none;
+  }
+}
