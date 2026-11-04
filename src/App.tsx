@@ -39,16 +39,16 @@ export function App() {
   };
 
   return (
-    <div className={`h-screen flex overflow-hidden theme-${theme} ${themeClasses[theme]}`}>
+    <div className={`jame-shell h-screen flex overflow-hidden theme-${theme} ${themeClasses[theme]}`}>
       {/* Sidebar */}
-      <div className={`w-full md:w-[380px] shrink-0 border-r flex flex-col ${sidebarBg[theme]} ${
+      <div className={`jame-sidebar w-full md:w-[380px] shrink-0 border-r flex flex-col ${sidebarBg[theme]} ${
         showMobileChat ? 'hidden md:flex' : 'flex'
       }`}>
         <Sidebar />
       </div>
 
       {/* Chat */}
-      <div className={`flex-1 flex flex-col ${
+      <div className={`jame-chat-stage flex-1 flex flex-col ${
         !showMobileChat && !activeChat ? 'hidden md:flex' : 'flex'
       }`}>
         <ChatView />
